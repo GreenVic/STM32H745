@@ -681,6 +681,7 @@ void SPI_IO_Delay(uint32_t Delay)
 
 static int32_t __ReadBlocks(uint32_t Instance, uint32_t* pData, uint32_t BlockIdx, uint32_t BlocksNbr)
 {
+	
 	int32_t ret = HARDWARE_IO_OK;
 	uint32_t response, offset = 0, blocks_nbr = BlocksNbr;
 	uint8_t tmp;
