@@ -127,7 +127,7 @@ static void SDCard_Config(void)
 	//Open a file
 	//This will call ff.c->f_open(), diskio.c->disk_read, sd_card.c->pntr_from_link_drvr_SD_read
 	fr = f_open(&fil, "hello.txt\0", FA_OPEN_ALWAYS | FA_WRITE);
-	char buff[256] = {"Yet another test!\0" };
+	char buff[256] = {"Writing at 71mpbs!\r\n to change the baudrate, open hardware_config.c. Its at the top!\0" };
 	UINT bytes_done = 0;
 	UINT bytes_to_go = strlen(buff);
 	//Read a file

@@ -3,7 +3,7 @@
 
 //If you get error on sd card init, and you can step through in 
 //debug and it works fine, your baud rate is probably too fast.
-#define SPI_BAUDRATE                   4000000 //18000000
+#define SPI_BAUDRATE                   12000000//71000000 //18000000
 
 
 void HW_config(SPI_TypeDef* SPIxInstance)

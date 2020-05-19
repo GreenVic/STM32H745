@@ -28,31 +28,31 @@ int32_t SD_IO_Init(SPI_TypeDef* SPIxInstance)
 		HW_config(SPIxInstance);
 
 		HW_IO_SET_CS_HIGH();
-		HW_IO_SET_CS_LOW();
-		HW_IO_SET_CS_HIGH();
-
-		//Send dummy byte 0xFF, 10 times with CS high 
-		//Rise CS and MOSI for 80 clocks cycles
-		tmp = SD_DUMMY_BYTE;
-
-		do
-		{
-			/* Send dummy byte 0xFF */
-			if (HW_IO_SPI_send(&tmp, 1U) != HARDWARE_IO_OK)
-			{
-				ret = HARDWARE_IO_COMM_ERROR;
-				break;
-			}
-			counter++;
-		} while (counter <= 9U);
-
-		//Put card in idle state
-		/* SD initialized and set to SPI mode properly */
-		if (SD_GoIdleState() != HARDWARE_IO_OK)
-		{
-			ret = HARDWARE_IO_UNKNOWN_ERROR;
-		}
 	}
+	
+	HW_IO_SET_CS_HIGH();
+	//Send dummy byte 0xFF, 10 times with CS high 
+		//Rise CS and MOSI for 80 clocks cycles
+	tmp = SD_DUMMY_BYTE;
+
+	do
+	{
+		/* Send dummy byte 0xFF */
+		if (HW_IO_SPI_send(&tmp, 1U) != HARDWARE_IO_OK)
+		{
+			ret = HARDWARE_IO_COMM_ERROR;
+			break;
+		}
+		counter++;
+	} while (counter <= 9U);
+
+	//Put card in idle state
+	/* SD initialized and set to SPI mode properly */
+	if (SD_GoIdleState() != HARDWARE_IO_OK)
+	{
+		ret = HARDWARE_IO_UNKNOWN_ERROR;
+	}
+
 	return ret;
 }
 
@@ -681,7 +681,7 @@ void SPI_IO_Delay(uint32_t Delay)
 
 static int32_t __ReadBlocks(uint32_t Instance, uint32_t* pData, uint32_t BlockIdx, uint32_t BlocksNbr)
 {
-	
+
 	int32_t ret = HARDWARE_IO_OK;
 	uint32_t response, offset = 0, blocks_nbr = BlocksNbr;
 	uint8_t tmp;
@@ -733,7 +733,8 @@ static int32_t __ReadBlocks(uint32_t Instance, uint32_t* pData, uint32_t BlockId
 					if (ret == HARDWARE_IO_OK)
 					{
 						/* Now look for the data token to signify the start of the data */
-						if (SD_WaitData(SD_TOKEN_START_DATA_SINGLE_BLOCK_READ) == HARDWARE_IO_OK)
+						ret = SD_WaitData(SD_TOKEN_START_DATA_SINGLE_BLOCK_READ);
+						if (ret == HARDWARE_IO_OK)
 						{
 							/* Read the SD block data : read NumByteToRead data */
 							if (HW_IO_SPI_recv((uint8_t*)pData + offset, SD_BLOCK_SIZE) != HARDWARE_IO_OK)
