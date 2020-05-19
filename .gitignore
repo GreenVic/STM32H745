@@ -342,3 +342,10 @@ healthchecksdb
 spi/Spi_sd/Spi_sd.sln
 spi/Spi_sd/Spi_sd.vcxproj
 spi/Spi_sd/Spi_sd.vcxproj.filters
+spi/sSpi_sd/Spi_sd-Debug.vgdbsettings
+spi/sSpi_sd/Spi_sd-Release.vgdbsettings
+spi/sSpi_sd/Spi_sd.sln
+spi/sSpi_sd/Spi_sd.vcxproj
+spi/sSpi_sd/Spi_sd.vcxproj.filters
+spi/sSpi_sd/stm32h7xx_hal_conf.h
+spi/sSpi_sd/system_stm32h7xx.c
