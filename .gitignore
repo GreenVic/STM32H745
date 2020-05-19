@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+*.xml
+spi/Spi_sd/Spi_sd.sln
+spi/Spi_sd/Spi_sd.vcxproj
+spi/Spi_sd/Spi_sd.vcxproj.filters

@@ -35,7 +35,7 @@ extern "C" {
 
 /* Integer types used for FatFs API */
 
-#if defined(_WIN32_)	/* Main development platform */
+#if defined(__WIN32)	/* Main development platform */
 #define FF_INTDEF 2
 #include <windows.h>
 typedef unsigned __int64 QWORD;
