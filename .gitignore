@@ -349,3 +349,7 @@ spi/sSpi_sd/Spi_sd.vcxproj
 spi/sSpi_sd/Spi_sd.vcxproj.filters
 spi/sSpi_sd/stm32h7xx_hal_conf.h
 spi/sSpi_sd/system_stm32h7xx.c
+spi/Spi_sd/Spi_sd-Debug.vgdbsettings
+spi/Spi_sd/Spi_sd-Release.vgdbsettings
+spi/Spi_sd/stm32h7xx_hal_conf.h
+spi/Spi_sd/system_stm32h7xx.c
